@@ -40,7 +40,7 @@ model Reward {
 
   title       String
   description String
-  expiration  DateTime
+  expiration  DateTime @default(now())
 
   achievementID String      @map("achievement_id")
   achievement   Achievement @relation(fields: [achievementID], references: [id])

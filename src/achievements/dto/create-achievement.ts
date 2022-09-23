@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { CreateRewardDTO } from "src/rewards/dto/create-reward";
+import { RewardDTO } from "src/rewards/dto/reward";
 export class CreateAchievementDTO {
   title: string;
   descriprion: string;
-  reward: CreateRewardDTO[];
+  reward: RewardDTO[];
 }

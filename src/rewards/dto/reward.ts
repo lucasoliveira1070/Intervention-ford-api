@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-export class CreateRewardDTO {
+export class RewardDTO {
   title: string;
   description: string;
+  expiration:Date;
 }
