@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id() @default(uuid())
+
+  name     String
+  password String
+
+  achievements Achievement[]
+
+  @@map("user")
+}
+
+model Achievement {
+  id String @id() @default(uuid())
+
+  title       String
+  description String
+
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id])
+
+  reward Reward[]
+
+  @@map("achievement")
+}
+
+model Reward {
+  id String @id() @default(uuid())
+
+  title       String
+  description String
+  expiration  DateTime
+
+  achievementID String      @map("achievement_id")
+  achievement   Achievement @relation(fields: [achievementID], references: [id])
+
+  @@map("reward")
+}
