@@ -11,7 +11,7 @@ export class UsersService {
     id: true,
     name: true,
     password: true,
-    achievement: {
+    achievements: {
       select: {
         id: true,
         title: true,
