@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { PrismaService } from 'src/database/service/prisma.service';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -9,12 +9,16 @@ export class UsersService {
 
   selectUserQuery = {
     id: true,
+    username: true,
     name: true,
     password: true,
     achievements: {
       select: {
         id: true,
         title: true,
+        icon:true,
+        color:true,
+        acquired:true,
         description: true
       }
     }
@@ -41,7 +45,8 @@ export class UsersService {
     });
 
     if (!user) {
-      throw new Error('User not found')
+      Logger.error('User not found');
+      return 'User Not found'
     }
     return user;
   }
@@ -54,7 +59,8 @@ export class UsersService {
     });
 
     if (!user) {
-      throw new Error('User not found')
+      Logger.error('User not found');
+      return 'User Not found'
     }
 
     return this.prismaService.user.update({

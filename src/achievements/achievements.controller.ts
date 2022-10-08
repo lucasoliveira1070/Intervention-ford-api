@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { AchievementService } from "./achievements.service";
+import { CreateAchievementDTO } from "./dto/create-achievement";
 
 @Controller('achievements')
 export class AchievementsController {

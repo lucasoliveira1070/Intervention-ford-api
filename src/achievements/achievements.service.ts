@@ -1,9 +1,12 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, Logger } from "@nestjs/common";
 import { PrismaService } from "src/database/service/prisma.service";
+import { UsersService } from "src/users/users.service";
+import { CreateAchievementDTO } from "./dto/create-achievement";
 
 @Injectable()
 export class AchievementService {
-    constructor(private prismaService: PrismaService) { }
+    constructor(
+        private prismaService: PrismaService) { }
 
     selectAchievementQuery = {
         id: true,
@@ -28,7 +31,7 @@ export class AchievementService {
             select: this.selectAchievementQuery
         })
 
-        if(!achievement){
+        if (!achievement) {
             throw new Error('Achievement not found')
         }
 
