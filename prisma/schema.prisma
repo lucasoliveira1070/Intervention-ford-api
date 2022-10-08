@@ -29,9 +29,11 @@ model Achievement {
 
   title       String
   description String
-  icon        String
-  acquired    Boolean
-  color       String
+  icon        String  @default("")
+  route       String  @default("")
+  acquired    Boolean @default(false)
+  color       String  @default("")
+  imagePath   String  @default("")
 
   userId String @map("user_id")
   user   User   @relation(fields: [userId], references: [id])

@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "achievement" ADD COLUMN     "acquired" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "color" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "icon" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "route" TEXT NOT NULL DEFAULT '';

@@ -4,6 +4,8 @@ export class CreateAchievementDTO {
   title: string;
   icon: string;
   acquired: boolean;
+  route: string;
   descriprion: string;
+  imagePath:string;
   reward: RewardDTO[];
 }
