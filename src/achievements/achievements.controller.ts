@@ -10,4 +10,9 @@ export class AchievementsController {
     findOne(@Param('id') id: string) {
         return this.achievementService.findOne(id);
     }
+
+    @Get('userachievements/:id')
+    findAllFromuser(@Param('id') id: string) {
+        return this.achievementService.findAllFromUser(id);
+    }
 }

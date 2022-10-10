@@ -12,15 +12,27 @@ export class AchievementService {
         id: true,
         title: true,
         description: true,
-        reward: {
-            select: {
-                id: true,
-                title: true,
-                description: true,
-                expiration: true
-            }
-        }
+        acquired: true,
+        color: true,
+        icon: true,
+        route: true,
+        imagePath: true,
+        nextStep:true
 
+    }
+
+    async findAllFromUser(id: string) {
+        return await this.prismaService.achievement.findMany({
+            where: {
+                userId: id
+            },
+            orderBy: [{
+                acquired: 'desc'
+            }, {
+                title: 'desc'
+            }],
+            select: this.selectAchievementQuery
+        })
     }
 
     async findOne(id: string) {

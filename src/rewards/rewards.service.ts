@@ -2,25 +2,26 @@ import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/database/service/prisma.service";
 
 @Injectable()
-export class RewardService{
-    constructor(private prismaService:PrismaService){ }
+export class RewardService {
+    constructor(private prismaService: PrismaService) { }
 
     selectRewardQuery = {
-        id:true,
-        title:true,
-        description:true,
-        expiration:true
+        id: true,
+        title: true,
+        description: true,
+        expiration: true,
+        sponsor:true
     }
 
-    async findOne(id:string){
+    async findOne(id: string) {
         const reward = await this.prismaService.reward.findUnique({
-            where:{
-                id
+            where: {
+                achievementID: id
             },
-            select:this.selectRewardQuery
+            select: this.selectRewardQuery
         });
 
-        if (!reward){
+        if (!reward) {
             throw new Error('Reward not found')
         }
 

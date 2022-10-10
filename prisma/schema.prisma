@@ -34,6 +34,7 @@ model Achievement {
   acquired    Boolean @default(false)
   color       String  @default("")
   imagePath   String  @default("")
+  nextStep    String  @default("")
 
   userId String @map("user_id")
   user   User   @relation(fields: [userId], references: [id])
@@ -49,8 +50,9 @@ model Reward {
   title       String
   description String
   expiration  DateTime @default(now())
+  sponsor     String   @default("")
 
-  achievementID String      @map("achievement_id")
+  achievementID String      @unique @map("achievement_id")
   achievement   Achievement @relation(fields: [achievementID], references: [id])
 
   @@map("reward")

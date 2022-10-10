@@ -7,5 +7,6 @@ export class CreateAchievementDTO {
   route: string;
   descriprion: string;
   imagePath:string;
+  nextStep:string;
   reward: RewardDTO[];
 }

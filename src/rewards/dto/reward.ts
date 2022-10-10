@@ -3,4 +3,5 @@ export class RewardDTO {
   title: string;
   description: string;
   expiration:Date;
+  sponsor:string;
 }
