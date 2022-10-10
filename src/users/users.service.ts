@@ -16,9 +16,9 @@ export class UsersService {
       select: {
         id: true,
         title: true,
-        icon:true,
-        color:true,
-        acquired:true,
+        icon: true,
+        color: true,
+        acquired: true,
         description: true
       }
     }
@@ -34,6 +34,21 @@ export class UsersService {
     return await this.prismaService.user.findMany({
       select: this.selectUserQuery
     });
+  }
+
+  async findByUsername(username: string) {
+    const user = await this.prismaService.user.findUnique({
+      where: {
+        username
+      },
+      select: this.selectUserQuery
+    });
+
+    if (!user) {
+      Logger.error('User not found');
+      return 'User Not found'
+    }
+    return user;
   }
 
   async findOne(id: string) {
